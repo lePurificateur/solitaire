@@ -4,7 +4,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 
-public class LigneGrille 
+public class Ligne 
 {
 	private Solitaire grille;
 	private int premiereColonne;
@@ -14,10 +14,10 @@ public class LigneGrille
 	/**
 	 * 
 	 */
-	public LigneGrille(Solitaire grille, int indice)
+	public Ligne(Solitaire grille, int indice)
 	{
 		this.grille = grille;
-		FormeGrille formeGrille = grille.getFormeGrille();
+		Forme formeGrille = grille.getFormeGrille();
 		premiereColonne = formeGrille.premiereColonne(indice);
 		derniereColonne = formeGrille.derniereColonne(indice);
 		int n = plageIndices();

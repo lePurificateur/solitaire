@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="solitaire.FormeGrille.Carre" project="Solitaire" 
-    file="/Solitaire/src/solitaire/FormeGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="solitaire.Forme.Carre" project="Solitaire" 
+    file="/Solitaire/src/solitaire/Forme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="87" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="solitaire.FormeGrille" project="Solitaire" 
-    file="/Solitaire/src/solitaire/FormeGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="solitaire.Forme" project="Solitaire" file="/Solitaire/src/solitaire/Forme.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="227" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="solitaire.FormeGrille.Losange" project="Solitaire" 
-    file="/Solitaire/src/solitaire/FormeGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="solitaire.Forme.Losange" project="Solitaire" 
+    file="/Solitaire/src/solitaire/Forme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="319" y="170"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
@@ -84,7 +84,7 @@
   </class>  
   <interface id="10" language="java" name="solitaire.ChangeListener" project="Solitaire" 
     file="/Solitaire/src/solitaire/ChangeListener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="771" y="329"/>    
+    <position height="-1" width="-1" x="773" y="312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -100,8 +100,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="solitaire.FormeGrille.Triangle" project="Solitaire" 
-    file="/Solitaire/src/solitaire/FormeGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="solitaire.Forme.Triangle" project="Solitaire" 
+    file="/Solitaire/src/solitaire/Forme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="424" y="173"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="solitaire.FormeGrille.Croix" project="Solitaire" 
-    file="/Solitaire/src/solitaire/FormeGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="solitaire.Forme.Croix" project="Solitaire" 
+    file="/Solitaire/src/solitaire/Forme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="207" y="166"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      
@@ -136,8 +136,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="solitaire.LigneGrille" project="Solitaire" 
-    file="/Solitaire/src/solitaire/LigneGrille.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="solitaire.Ligne" project="Solitaire" file="/Solitaire/src/solitaire/Ligne.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="930" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="false" 
       visibility="true">      

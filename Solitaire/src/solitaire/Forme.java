@@ -1,12 +1,12 @@
 package solitaire;
 
 
-public abstract class FormeGrille
+public abstract class Forme
 {
 	public static final int CARRE = 0, CROIX = 1, LOSANGE = 2, TRIANGLE = 3, NB_FORMES = 4;
 	private int taille;
 
-	public FormeGrille(int taille)
+	public Forme(int taille)
 	{
 		this.taille = taille;
 	}
@@ -20,10 +20,10 @@ public abstract class FormeGrille
 	{
 		switch (forme)
 		{
-		case CARRE : return new Solitaire(new FormeGrille.Carre(taille));
-		case CROIX : return new Solitaire(new FormeGrille.Croix(taille));
-		case LOSANGE : return new Solitaire(new FormeGrille.Losange(taille));
-		case TRIANGLE : return new Solitaire(new FormeGrille.Triangle(taille));
+		case CARRE : return new Solitaire(new Forme.Carre(taille));
+		case CROIX : return new Solitaire(new Forme.Croix(taille));
+		case LOSANGE : return new Solitaire(new Forme.Losange(taille));
+		case TRIANGLE : return new Solitaire(new Forme.Triangle(taille));
 		default : return null;
 		}
 	}
@@ -54,7 +54,7 @@ public abstract class FormeGrille
 		return max + 1;
 	}
 	
-	public static class Carre extends FormeGrille 
+	public static class Carre extends Forme 
 	{
 		
 		public Carre(int k)
@@ -89,7 +89,7 @@ public abstract class FormeGrille
 		}
 	}
 	
-	public static class Croix extends FormeGrille 
+	public static class Croix extends Forme 
 	{
 		public Croix(int taille)
 		{
@@ -124,7 +124,7 @@ public abstract class FormeGrille
 	
 	}
 	
-	public static class Losange extends FormeGrille 
+	public static class Losange extends Forme 
 	{
 		public Losange(int taille)
 		{
@@ -166,7 +166,7 @@ public abstract class FormeGrille
 		}
 	}
 
-	public static class Triangle extends FormeGrille 
+	public static class Triangle extends Forme 
 	{
 		public Triangle(int taille)
 		{

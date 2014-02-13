@@ -209,10 +209,10 @@ public class SolitaireFrame
 		// options de formes 
 		MenuItem carre = new MenuItem("Carre"), croix = new MenuItem("Croix"), 
 				losange = new MenuItem("Losange"), triangle = new MenuItem("Triangle");
-		carre.addActionListener(getChangeForme(FormeGrille.CARRE));
-		croix.addActionListener(getChangeForme(FormeGrille.CROIX));
-		losange.addActionListener(getChangeForme(FormeGrille.LOSANGE));
-		triangle.addActionListener(getChangeForme(FormeGrille.TRIANGLE));
+		carre.addActionListener(getChangeForme(Forme.CARRE));
+		croix.addActionListener(getChangeForme(Forme.CROIX));
+		losange.addActionListener(getChangeForme(Forme.LOSANGE));
+		triangle.addActionListener(getChangeForme(Forme.TRIANGLE));
 		menu.add(carre);
 		menu.add(croix);
 		menu.add(losange);
@@ -291,8 +291,8 @@ public class SolitaireFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				FormeGrille fg = grille.getFormeGrille();
-				setGrille(FormeGrille.getGrille(fg.getFormeIndex(), fg.getTaille()));
+				Forme fg = grille.getFormeGrille();
+				setGrille(Forme.getGrille(fg.getFormeIndex(), fg.getTaille()));
 			}
 		};
 	}
@@ -376,7 +376,7 @@ public class SolitaireFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				setGrille(FormeGrille.getGrille(forme, taille));
+				setGrille(Forme.getGrille(forme, taille));
 			}
 		};
 	}
@@ -392,6 +392,6 @@ public class SolitaireFrame
 	
 	public static void main(String[] args)
 	{
-		new SolitaireFrame(new Solitaire(new FormeGrille.Losange(3)));
+		new SolitaireFrame(new Solitaire(new Forme.Losange(3)));
 	}
 }

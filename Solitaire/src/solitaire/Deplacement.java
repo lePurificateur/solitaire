@@ -35,7 +35,7 @@ class Deplacement extends Operation
 		this(grille, caseDepart, caseDepart.milieu(coordArrivee), coordArrivee.getCase());
 	}
 	
-	Deplacement(Solitaire grille, Case caseDepart, int direction)
+	Deplacement(Solitaire grille, Case caseDepart, Direction direction)
 	{
 		this(grille, caseDepart, caseDepart.voisin(direction, 2));
 	}

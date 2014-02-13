@@ -6,31 +6,21 @@ import java.util.TreeSet;
 public class Solitaire 
 {
 	private Historique historique;
-	private LigneGrille[] lignes;
+	private Ligne[] lignes;
 	private	int nbLignes;
-	private FormeGrille formeGrille;
+	private Forme formeGrille;
 	private Selection selection;
 	private boolean diagonaleAutorisee = false; 
 	private boolean modeTriche = false;
 	private ChangeListener<Solitaire> listener;
 	
- 	public static final int BAS_GAUCHE= 1;
- 	public static final int BAS= 2;
- 	public static final int BAS_DROITE = 3;
- 	public static final int DROITE = 4;
- 	public static final int HAUT_DROITE = 5;
- 	public static final int HAUT = 6;
- 	public static final int HAUT_GAUCHE = 7;
- 	public static final int GAUCHE = 8;
- 	public static final int MIN_DIRECTION = 1, MAX_DIRECTION = 8;
- 	
-	public Solitaire(FormeGrille formeGrille) 
+	public Solitaire(Forme formeGrille) 
 	{
 		this.formeGrille = formeGrille;
 		nbLignes = formeGrille.getNbLignes();
-		lignes = new LigneGrille[nbLignes];
+		lignes = new Ligne[nbLignes];
 		for (int i = 0 ; i < nbLignes ; i++)
-			lignes[i] = new LigneGrille(this, i);
+			lignes[i] = new Ligne(this, i);
 		selection = new Selection();
 		setSelection(getPremiereCase());
 		historique = new Historique();
@@ -57,7 +47,7 @@ public class Solitaire
 	
 	private Case getPremiereCase()
 	{
-		LigneGrille ligne1 = lignes[0]; 
+		Ligne ligne1 = lignes[0]; 
 		return ligne1.getCase(ligne1.getPremiereColonne());
 	}
 	
@@ -66,7 +56,7 @@ public class Solitaire
 		String res = "mode Triche = " + modeTriche();
 		res += "\nmode Diagonale = " + diagonaleAutorisee();
 		res += "\npartie terminee = " + estTerminee() + "\n\n";		
-		for (LigneGrille l : lignes)
+		for (Ligne l : lignes)
 			res += l.toString();
 		return res + "\n";
 	}
@@ -89,7 +79,7 @@ public class Solitaire
 		this.modeTriche = modeTriche;
 	}
 
-	public FormeGrille getFormeGrille() {
+	public Forme getFormeGrille() {
 		return formeGrille;
 	}
 	
@@ -113,7 +103,7 @@ public class Solitaire
 //			|| direction == DROITE || direction == GAUCHE);
 //	}
 
-	public boolean deplacementLegal(int direction)
+	public boolean deplacementLegal(Direction direction)
 	{
 		Operation d = new Deplacement(this, getCaseSelectionnee(), direction);
 		return d.estLegale();
@@ -175,7 +165,7 @@ public class Solitaire
 //		return true;
 	}
 	
-	public boolean deplacePion(int direction)
+	public boolean deplacePion(Direction direction)
 	{
 		return deplacePion(getCaseSelectionnee().voisin(direction, 2).getCase());
 //		Selection s = getSelection();
@@ -214,7 +204,7 @@ public class Solitaire
 		historique.setListener(listener);
 	}
 	
-	public boolean deplaceSelection(int direction)
+	public boolean deplaceSelection(Direction direction)
 	{
 		return selection.deplaceSelection(direction);
 	}

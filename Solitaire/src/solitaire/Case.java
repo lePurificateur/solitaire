@@ -4,7 +4,7 @@ public class Case
 {
 	private final static String SELECTIONNEE = "|", VIDE = "::", OCCUPEE = "X", ACCESSIBLE = ";;", RIEN = " ";
 	private final Coordonnees coordonnees;
-	private final LigneGrille ligneGrille;
+	private final Ligne ligneGrille;
 	private boolean pion;
 	private boolean selectionnee;
 	private boolean accessible = false;
@@ -21,7 +21,7 @@ public class Case
 			listener.changePerformed(this);
 	}
 	
-	public Case(LigneGrille ligneGrille, Coordonnees coordonnees) 
+	public Case(Ligne ligneGrille, Coordonnees coordonnees) 
 	{
 		this.ligneGrille = ligneGrille ;
 		this.coordonnees = coordonnees;
@@ -30,7 +30,7 @@ public class Case
 		changePerformed();
 	}
 
-	public Case(LigneGrille ligneGrille, int i, int j) 
+	public Case(Ligne ligneGrille, int i, int j) 
 	{
 		this(ligneGrille, new Coordonnees(i, j, ligneGrille.getGrille()));
 	}
@@ -135,8 +135,7 @@ public class Case
 	 
 	private void mouvementsLegaux(boolean enable)
 	{
-		for (int direction = Solitaire.MIN_DIRECTION ; direction <= Solitaire.MAX_DIRECTION ; 
-				direction++)
+		for (Direction direction : Direction.DIRECTIONS)
 		{
 			if (enable)
 			{
@@ -185,7 +184,7 @@ public class Case
 //		return calculeDeplacement(direction, i - 1).deplacement(direction); 
 //	}
 
-	Coordonnees voisin(int direction, int i)
+	Coordonnees voisin(Direction direction, int i)
 	{
 		return getCoordonnees().voisin(direction, i);
 	}

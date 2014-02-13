@@ -65,7 +65,7 @@ public class Selection
 //	}
 //	
 	
-	Coordonnees voisin(int direction, int i)
+	Coordonnees voisin(Direction direction, int i)
 	{
 		return getCase().voisin(direction, i);
 	}
@@ -98,7 +98,7 @@ public class Selection
 //		return true;
 //	}
 	
-	public boolean deplaceSelection(int direction)
+	public boolean deplaceSelection(Direction direction)
 	{
 		Case nouvelleCase = voisin(direction, 1).getCase();
 		if (nouvelleCase == null)

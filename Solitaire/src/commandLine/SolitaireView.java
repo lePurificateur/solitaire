@@ -21,7 +21,7 @@ public class SolitaireView extends JFrame implements KeyListener
 	private Solitaire grille;
 	private Case caseInitiale;
 	private JTextArea text = new JTextArea ("test");
-	private int forme = FormeGrille.CARRE; 
+	private int forme = Forme.CARRE; 
 	
 	public void init()
 	{
@@ -98,13 +98,13 @@ public class SolitaireView extends JFrame implements KeyListener
 	
 	public SolitaireView()
 	{
-		grille = new Solitaire(new FormeGrille.Carre(taille));
+		grille = new Solitaire(new Forme.Carre(taille));
 		init();
 	}
 
 	public void keyPressed(KeyEvent e){}
 
-	private void deplacePion(int direction)
+	private void deplacePion(Direction direction)
 	{
 		grille.deplacePion(direction);		
 		caseInitiale = null;
@@ -115,19 +115,19 @@ public class SolitaireView extends JFrame implements KeyListener
 		if (!pionSelectionne())
 			switch(c)
 			{
-				case KEY_LEFT : grille.deplaceSelection(Solitaire.GAUCHE);break;
-				case KEY_UP : grille.deplaceSelection(Solitaire.HAUT);break;
-				case KEY_RIGHT : grille.deplaceSelection(Solitaire.DROITE);break;
-				case KEY_DOWN : grille.deplaceSelection(Solitaire.BAS);break;
+				case KEY_LEFT : grille.deplaceSelection(Direction.GAUCHE);break;
+				case KEY_UP : grille.deplaceSelection(Direction.HAUT);break;
+				case KEY_RIGHT : grille.deplaceSelection(Direction.DROITE);break;
+				case KEY_DOWN : grille.deplaceSelection(Direction.BAS);break;
 				default: 
 			}
 		else
 			switch(c)
 			{
-				case KEY_LEFT : deplacePion(Solitaire.GAUCHE);break;
-				case KEY_UP : deplacePion(Solitaire.HAUT);break;
-				case KEY_RIGHT : deplacePion(Solitaire.DROITE);break;
-				case KEY_DOWN : deplacePion(Solitaire.BAS);break;
+				case KEY_LEFT : deplacePion(Direction.GAUCHE);break;
+				case KEY_UP : deplacePion(Direction.HAUT);break;
+				case KEY_RIGHT : deplacePion(Direction.DROITE);break;
+				case KEY_DOWN : deplacePion(Direction.BAS);break;
 				default: 
 			}
 	}
@@ -165,14 +165,14 @@ public class SolitaireView extends JFrame implements KeyListener
 				case RETABLIR : retablir(); break;
 				case MODE_DIAGONALE : grille.setDiagonaleAutorisee(!grille.diagonaleAutorisee());break;
 				case DETRUIRE : grille.detruitPionSelectionne();break;
-				case BAS_GAUCHE : deplacePion(Solitaire.BAS_GAUCHE);break;
-				case BAS : deplacePion(Solitaire.BAS);break;
-				case BAS_DROITE : deplacePion(Solitaire.BAS_DROITE);break;
-				case GAUCHE : deplacePion(Solitaire.GAUCHE);break;
-				case DROITE : deplacePion(Solitaire.DROITE);break;
-				case HAUT_GAUCHE : deplacePion(Solitaire.HAUT_GAUCHE);break;
-				case HAUT : deplacePion(Solitaire.HAUT);break;
-				case HAUT_DROITE : deplacePion(Solitaire.HAUT_DROITE);break;
+				case BAS_GAUCHE : deplacePion(Direction.BAS_GAUCHE);break;
+				case BAS : deplacePion(Direction.BAS);break;
+				case BAS_DROITE : deplacePion(Direction.BAS_DROITE);break;
+				case GAUCHE : deplacePion(Direction.GAUCHE);break;
+				case DROITE : deplacePion(Direction.DROITE);break;
+				case HAUT_GAUCHE : deplacePion(Direction.HAUT_GAUCHE);break;
+				case HAUT : deplacePion(Direction.HAUT);break;
+				case HAUT_DROITE : deplacePion(Direction.HAUT_DROITE);break;
 				case DEPLACER : deplacer(); break;
 				default : arrowReleased(e.getKeyCode());
 			}
@@ -183,7 +183,7 @@ public class SolitaireView extends JFrame implements KeyListener
 		printGrid();
 		switch (key)
 		{
-			case 'r' : forme++ ; forme %= FormeGrille.NB_FORMES ; recommence(forme, taille); break;
+			case 'r' : forme++ ; forme %= Forme.NB_FORMES ; recommence(forme, taille); break;
 			case '+' : if (taille < 6) taille++ ; recommence(forme, taille); break;
 			case '-' : if (taille > 2) taille-- ; recommence(forme, taille); break;
 			default: 
@@ -192,7 +192,7 @@ public class SolitaireView extends JFrame implements KeyListener
 	
 	private void recommence(int figure, int taille)
 	{
-		grille = FormeGrille.getGrille(figure, taille); 
+		grille = Forme.getGrille(figure, taille); 
 		printGrid();
 	}
 	
