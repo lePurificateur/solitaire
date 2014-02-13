@@ -123,7 +123,9 @@
   <association id="28">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="29" name="sourceLabel"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="15" width="23" x="173" y="182"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
