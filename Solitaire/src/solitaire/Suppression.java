@@ -4,15 +4,15 @@ class Suppression extends Operation
 {
 	private Case caseSupprimee;
 	
-	Suppression(Solitaire grille, Case caseSupprimee)
+	Suppression(Solitaire solitaire, Case caseSupprimee)
 	{
-		super(grille);
+		super(solitaire);
 		this.caseSupprimee = caseSupprimee;
 	}
 
-	Suppression(Solitaire grille, Coordonnees c)
+	Suppression(Solitaire solitaire, Coordonnees c)
 	{
-		this(grille, c.getCase());
+		this(solitaire, c.getCase());
 	}
 
 
@@ -23,13 +23,11 @@ class Suppression extends Operation
 	
 	public void annule() 
 	{
-		//caseSupprimee.getGrille().getSelection().setCase(caseSupprimee);
 		caseSupprimee.ajoutePion();
 	}
 	
 	public boolean execute() 
 	{
-		//caseSupprimee.getGrille().getSelection().setCase(caseSupprimee);
 		caseSupprimee.enlevePion();
 		return true;
 	}
@@ -43,9 +41,9 @@ class Suppression extends Operation
 	@Override
 	public boolean estLegale()
 	{
-		if (!getGrille().modeTriche())
+		if (!getSolitaire().modeTriche())
 			return false;
-		if (!getGrille().getCaseSelectionnee().estOccupee())
+		if (!getSolitaire().getCaseSelectionnee().estOccupee())
 			return false;
 		return true;
 	}

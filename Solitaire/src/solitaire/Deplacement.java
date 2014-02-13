@@ -12,7 +12,7 @@ class Deplacement extends Operation
 		caseDepart.ajoutePion();
 		caseMilieu.ajoutePion();
 		caseArrivee.enlevePion();
-		getGrille().setSelection(caseDepart);
+		getSolitaire().setSelection(caseDepart);
 	}
 	
 	public boolean execute()
@@ -20,30 +20,30 @@ class Deplacement extends Operation
 		caseDepart.enlevePion();
 		caseMilieu.enlevePion();
 		caseArrivee.ajoutePion();
-		getGrille().setSelection(caseArrivee);
+		getSolitaire().setSelection(caseArrivee);
 		return true;
 	}
 
-	Deplacement(Solitaire grille, Case caseDepart, Case caseArrivee)
+	Deplacement(Solitaire solitaire, Case caseDepart, Case caseArrivee)
 	{
-		this(grille, caseDepart, (caseDepart != null) ? caseDepart.milieu(caseArrivee) : null, 
+		this(solitaire, caseDepart, (caseDepart != null) ? caseDepart.milieu(caseArrivee) : null, 
 				caseArrivee);
 	}
 	
-	Deplacement(Solitaire grille, Case caseDepart, Coordonnees coordArrivee)
+	Deplacement(Solitaire solitaire, Case caseDepart, Coordonnees coordArrivee)
 	{
-		this(grille, caseDepart, caseDepart.milieu(coordArrivee), coordArrivee.getCase());
+		this(solitaire, caseDepart, caseDepart.milieu(coordArrivee), coordArrivee.getCase());
 	}
 	
-	Deplacement(Solitaire grille, Case caseDepart, Direction direction)
+	Deplacement(Solitaire solitaire, Case caseDepart, Direction direction)
 	{
-		this(grille, caseDepart, caseDepart.voisin(direction, 2));
+		this(solitaire, caseDepart, caseDepart.voisin(direction, 2));
 	}
 
 	
-	Deplacement(Solitaire grille, Case caseDepart, Case caseMilieu, Case caseArrivee)
+	Deplacement(Solitaire solitaire, Case caseDepart, Case caseMilieu, Case caseArrivee)
 	{
-		super(grille);
+		super(solitaire);
 		this.caseDepart = caseDepart;
 		this.caseMilieu = caseMilieu;
 		this.caseArrivee = caseArrivee;
@@ -71,7 +71,7 @@ class Deplacement extends Operation
 				dj = Math.abs(caseArrivee.getJ() - caseDepart.getJ());
 		if (di == 0 && dj == 2 || di == 2 && dj == 0)
 			return true;
-		if (getGrille().diagonaleAutorisee() && di == 2 && dj == 2)
+		if (getSolitaire().diagonaleAutorisee() && di == 2 && dj == 2)
 			return true;
 		return false;
 		}
@@ -90,33 +90,4 @@ class Deplacement extends Operation
 	{
 		return caseArrivee;
 	}
-	
-//	public boolean deplacementLegal(Case nouvelleCase)
-//	{
-//		if (nouvelleCase == null)
-//			return false;
-//		Case caseIntermediaire = getCase(getCoordonnees().milieu(nouvelleCase.getCoordonnees()));
-//		if (caseIntermediaire == null)
-//			return false;
-//		if (!caseIntermediaire.estOccupee() || nouvelleCase.estOccupee())
-//			return false;
-//		return true;
-//	}
-
-//	public boolean deplacePion(Case nouvelleCase)
-//	{
-//		if (!deplacementLegal(nouvelleCase))
-//			return false;
-//		Case caseIntermediaire = getCase(getCoordonnees().milieu(nouvelleCase.getCoordonnees()));
-//		//getGrille().ajouteHistorique(
-//			//		new Deplacement(getGrille(), maCase, caseIntermediaire, nouvelleCase));
-//		maCase.enlevePion();
-//		caseIntermediaire.enlevePion();
-//		nouvelleCase.ajoutePion();  
-//		setCase(nouvelleCase);
-//		return true;
-//	}
-
-
 }
-

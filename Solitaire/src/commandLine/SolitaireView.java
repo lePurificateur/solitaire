@@ -192,7 +192,7 @@ public class SolitaireView extends JFrame implements KeyListener
 	
 	private void recommence(int figure, int taille)
 	{
-		grille = Forme.getGrille(figure, taille); 
+		grille = Forme.createSolitaire(figure, taille); 
 		printGrid();
 	}
 	

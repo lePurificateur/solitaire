@@ -16,7 +16,7 @@ public abstract class Forme
 		return taille;
 	}
 	
-	public static Solitaire getGrille(int forme, int taille)
+	public static Solitaire createSolitaire(int forme, int taille)
 	{
 		switch (forme)
 		{
@@ -28,9 +28,9 @@ public abstract class Forme
 		}
 	}
 	
-	public Solitaire getGrille(int taille)
+	public Solitaire createSolitaire(int taille)
 	{
-		return getGrille(getFormeIndex(), taille);
+		return createSolitaire(getFormeIndex(), taille);
 	}
 
 	public abstract int getFormeIndex();

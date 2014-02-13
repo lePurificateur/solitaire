@@ -67,7 +67,6 @@ public class Historique
 		onChange();
 		return true;
 	}
-
 	
 	public String toString()
 	{

@@ -20,7 +20,7 @@ public class SolitaireFrame
 {
 	private JFrame frame;
 	private Solitaire grille;
-	private Drawable caseDrawer = new CircleDrawer();
+	private Drawable caseDrawer = new TextDrawer();
 	private List<SolitaireLabel> labels;
 	private int nbLignes, nbColonnes;
 	static final String 
@@ -43,21 +43,12 @@ public class SolitaireFrame
 		if (!estTerminee())
 		{
 			if (sourceLabel != null && sourceLabel.getCase() != null)	
-			{
 				grille.setSelection(null);
-				//sourceLabel.updateText();
-			}
 			sourceLabel = p;
 			if (sourceLabel != null && sourceLabel.getCase() != null)	
-			{
 				grille.setSelection(sourceLabel.getCase());
-				//sourceLabel.updateText();
-			}
 			else
-			{
 				grille.setSelection(null);
-				//sourceLabel.updateText();				
-			}
 		}
 	}
 	
@@ -113,17 +104,11 @@ public class SolitaireFrame
 			}
 	}
 	
-//	private void drawLabels()
-//	{
-//		for (SolitaireLabel label : labels)
-//			label.update();
-//	}
-	
 	private JPanel getGrillePanel()
 	{
 		JPanel grillePanel = new JPanel();
-		grillePanel.setLayout(new GridLayout(grille.getFormeGrille().getNbLignes(), 
-				grille.getFormeGrille().getNbColonnes()));
+		grillePanel.setLayout(new GridLayout(grille.getForme().getNbLignes(), 
+				grille.getForme().getNbColonnes()));
 		fillGrid(grillePanel);
 		return grillePanel;
 	}
@@ -140,14 +125,13 @@ public class SolitaireFrame
 	{
 		this.grille = grille;
 		grille.setSelection(null);
-		nbLignes = grille.getFormeGrille().getNbLignes();
-		nbColonnes = grille.getFormeGrille().getNbColonnes();
+		nbLignes = grille.getForme().getNbLignes();
+		nbColonnes = grille.getForme().getNbColonnes();
 		makeMenu();
 		grille.setHistoriqueListener(getHistoriqueListener());
 		grille.setChangeListener(getGrilleListener());
 		frame.setContentPane(getMainPanel());
 		frame.pack();
-//		drawLabels();
 	}
 	
 	private Menu getMenuJeu()
@@ -291,8 +275,8 @@ public class SolitaireFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Forme fg = grille.getFormeGrille();
-				setGrille(Forme.getGrille(fg.getFormeIndex(), fg.getTaille()));
+				Forme fg = grille.getForme();
+				setGrille(Forme.createSolitaire(fg.getFormeIndex(), fg.getTaille()));
 			}
 		};
 	}
@@ -307,7 +291,7 @@ public class SolitaireFrame
 				if (taille < TAILLE_MAX)
 				{
 					taille++;
-					setGrille(grille.getFormeGrille().getGrille(taille));
+					setGrille(grille.getForme().createSolitaire(taille));
 					agrandir.setEnabled(taille != TAILLE_MAX);
 				}
 			}
@@ -324,7 +308,7 @@ public class SolitaireFrame
 				if (taille > TAILLE_MIN)
 				{
 					taille--;
-					setGrille(grille.getFormeGrille().getGrille(taille));
+					setGrille(grille.getForme().createSolitaire(taille));
 					retrecir.setEnabled(taille != TAILLE_MIN);
 				}
 			}
@@ -376,7 +360,7 @@ public class SolitaireFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				setGrille(Forme.getGrille(forme, taille));
+				setGrille(Forme.createSolitaire(forme, taille));
 			}
 		};
 	}

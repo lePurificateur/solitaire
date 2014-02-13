@@ -2,23 +2,23 @@ package solitaire;
 
 public class Coordonnees extends Direction
 {
-	private Solitaire grille;
+	private Solitaire solitaire;
 
 	public Coordonnees(int i, int j, Solitaire grille) 
 	{
 		super(i, j);
-		this.grille = grille;
+		this.solitaire = grille;
 	}
 
 	public Coordonnees(Direction direction, Solitaire grille) 
 	{
 		super(direction);
-		this.grille = grille;
+		this.solitaire = grille;
 	}
 
 	public Solitaire getGrille()
 	{
-		return grille;
+		return solitaire;
 	}
 
 	public boolean sontValides()
@@ -32,7 +32,7 @@ public class Coordonnees extends Direction
 
 	public Forme getFormeGrille() 
 	{
-		return getGrille().getFormeGrille();
+		return getGrille().getForme();
 	}
 	
 	public Case getCase()
@@ -48,18 +48,6 @@ public class Coordonnees extends Direction
 	public Coordonnees voisin(Direction direction)
 	{
 		return new Coordonnees(this.additionne(direction), getGrille());
-//		switch(direction)
-//		{
-//		case HAUT : return new Coordonnees(getI() - 1, getJ(), getGrille());
-//		case BAS : return new Coordonnees(getI() + 1, getJ(), getGrille());
-//		case GAUCHE : return new Coordonnees(getI(), getJ() - 1, getGrille());
-//		case DROITE : return new Coordonnees(getI(), getJ() + 1, getGrille());
-//		case HAUT_DROITE : return voisin(DROITE).voisin(HAUT);
-//		case BAS_DROITE : return voisin(BAS).voisin(DROITE);
-//		case HAUT_GAUCHE : return voisin(HAUT).voisin(GAUCHE);
-//		case BAS_GAUCHE : return voisin(BAS).voisin(GAUCHE);
-//		default : System.out.println("Invalid Argument"); return null;
-//		}
 	}
 	
 	Coordonnees voisin(Direction direction, int i)
@@ -68,5 +56,4 @@ public class Coordonnees extends Direction
 			return this;
 		return voisin(direction, i - 1).voisin(direction);
 	}
-
 }

@@ -2,18 +2,18 @@ package solitaire;
 
 abstract class Operation 
 {
-	private Solitaire grille;
+	private Solitaire solitaire;
 	private Operation next;
 	
-	Operation(Solitaire grille)
+	Operation(Solitaire solitaire)
 	{
-		this.grille = grille;
+		this.solitaire = solitaire;
 		setNext(null);
 	}
 	
-	public Solitaire getGrille()
+	public Solitaire getSolitaire()
 	{
-		return grille;
+		return solitaire;
 	}
 	
 	public abstract boolean estLegale();
@@ -32,4 +32,3 @@ abstract class Operation
 		this.next = next;
 	}
 }
-

@@ -12,7 +12,6 @@ public class Direction implements Comparable<Direction>
  		BAS_DROITE = BAS.additionne(DROITE),
  		BAS_GAUCHE = BAS.additionne(GAUCHE);
  	public static final Direction[] DIRECTIONS = {HAUT, BAS, GAUCHE, DROITE, HAUT_GAUCHE, HAUT_DROITE, BAS_GAUCHE, BAS_DROITE};
-// 	public final static int MIN_DIRECTION = 1, MAX_DIRECTION = 8;
  	
 	private final int i;
 	private final int j;
@@ -57,5 +56,4 @@ public class Direction implements Comparable<Direction>
 		else
 			return ((Integer)getJ()).compareTo(autre.getJ());
 	}
-	
 }

@@ -8,16 +8,16 @@ public class Solitaire
 	private Historique historique;
 	private Ligne[] lignes;
 	private	int nbLignes;
-	private Forme formeGrille;
+	private Forme forme;
 	private Selection selection;
-	private boolean diagonaleAutorisee = false; 
+	private boolean diagonaleAutorisee = false;
 	private boolean modeTriche = false;
 	private ChangeListener<Solitaire> listener;
 	
-	public Solitaire(Forme formeGrille) 
+	public Solitaire(Forme forme) 
 	{
-		this.formeGrille = formeGrille;
-		nbLignes = formeGrille.getNbLignes();
+		this.forme = forme;
+		nbLignes = forme.getNbLignes();
 		lignes = new Ligne[nbLignes];
 		for (int i = 0 ; i < nbLignes ; i++)
 			lignes[i] = new Ligne(this, i);
@@ -60,6 +60,9 @@ public class Solitaire
 			res += l.toString();
 		return res + "\n";
 	}
+	/**
+	 * 
+	 */
 
 	public boolean diagonaleAutorisee() 
 	{
@@ -79,8 +82,8 @@ public class Solitaire
 		this.modeTriche = modeTriche;
 	}
 
-	public Forme getFormeGrille() {
-		return formeGrille;
+	public Forme getForme() {
+		return forme;
 	}
 	
 	public Case getCase(int i, int j)
@@ -96,57 +99,27 @@ public class Solitaire
 			return getCase(c.getI(), c.getJ());
 		return null;
 	}
-	
-//	private boolean directionLegale(int direction)
-//	{
-//		return (diagonaleAutorisee() || direction == BAS || direction == HAUT
-//			|| direction == DROITE || direction == GAUCHE);
-//	}
 
 	public boolean deplacementLegal(Direction direction)
 	{
 		Operation d = new Deplacement(this, getCaseSelectionnee(), direction);
 		return d.estLegale();
-		
-		
-//		if (!directionLegale(direction))
-//			return false;
-//		Selection s = getSelection();
-//		if (s == null)
-//			return false;
-//		Coordonnees c = s.voisin(direction, 2);
-//		Case destination = getCase(c);
-//		if (destination == null)
-//			return false;
-//		return deplacementLegal(destination);
 	}
 
-	// TODO vérifier que les cases ne sont pas occupées
-	
 	public boolean deplacementLegal(Case destination)
 	{
 		Operation d = new Deplacement(this, getCaseSelectionnee(), destination);
 		return d.estLegale();
-
-//		if (destination == null || selection.getCase() == null)
-//			return false;
-//		int di = Math.abs(destination.getI() - selection.getCase().getI()),
-//				dj = Math.abs(destination.getJ() - selection.getCase().getJ());
-//		if (di == 0 && dj == 2 || di == 2 && dj == 0)
-//			return true;
-//		if (diagonaleAutorisee() && di == 2 && dj == 2)
-//			return true;
-//		return false;
 	}
 
-	private boolean executeOperation(Operation o)
+	private boolean executeOperation(Operation operation)
 	{
-		if (o.estLegale())
+		if (operation.estLegale())
 		{
-			boolean res = o.execute();
+			boolean res = operation.execute();
 			if (res)
 			{
-				ajouteHistorique(o);
+				ajouteHistorique(operation);
 				checkListener();
 			}
 			return res;
@@ -157,42 +130,17 @@ public class Solitaire
 	public boolean detruitPionSelectionne()
 	{
 		return executeOperation(new Suppression(this, getCaseSelectionnee()));
-				// ancienne version
-		//getCaseSelectionnee().enlevePion();
-		//ajouteHistorique(new Suppression(this, getCaseSelectionnee()));
-		//setSelection(null);
-//		checkListener();
-//		return true;
 	}
 	
 	public boolean deplacePion(Direction direction)
 	{
 		return deplacePion(getCaseSelectionnee().voisin(direction, 2).getCase());
-//		Selection s = getSelection();
-//		if (s == null)
-//			return false;
-//		Coordonnees c = s.voisin(direction, 2);
-//		Case destination = getCase(c);
-//		if (destination == null)
-//			return false;
-//		return deplacePion(direction);
-//		if (!deplacementLegal(direction))
-//			return false;
-//		boolean result = selection.deplacePion(direction);
-//		checkListener();
-//		return result;
 	}
 
 	public boolean deplacePion(Case destination)
 	{
 		return executeOperation(new Deplacement(this, getCaseSelectionnee(), destination)); 
-//		if (!deplacementLegal(destination))
-//			return false;
-//		boolean result = selection.deplacePion(destination);
-//		checkListener();
-//		return result;
 	}
-
 	
 	public void setSelection(Case c)
 	{

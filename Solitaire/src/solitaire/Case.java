@@ -4,7 +4,7 @@ public class Case
 {
 	private final static String SELECTIONNEE = "|", VIDE = "::", OCCUPEE = "X", ACCESSIBLE = ";;", RIEN = " ";
 	private final Coordonnees coordonnees;
-	private final Ligne ligneGrille;
+	private final Ligne ligne;
 	private boolean pion;
 	private boolean selectionnee;
 	private boolean accessible = false;
@@ -21,18 +21,18 @@ public class Case
 			listener.changePerformed(this);
 	}
 	
-	public Case(Ligne ligneGrille, Coordonnees coordonnees) 
+	public Case(Ligne ligne, Coordonnees coordonnees) 
 	{
-		this.ligneGrille = ligneGrille ;
+		this.ligne = ligne ;
 		this.coordonnees = coordonnees;
 		this.pion = false;
 		this.selectionnee = false;
 		changePerformed();
 	}
 
-	public Case(Ligne ligneGrille, int i, int j) 
+	public Case(Ligne ligne, int i, int j) 
 	{
-		this(ligneGrille, new Coordonnees(i, j, ligneGrille.getGrille()));
+		this(ligne, new Coordonnees(i, j, ligne.getSolitaire()));
 	}
 	
 	public boolean estAccessible() 
@@ -123,9 +123,9 @@ public class Case
 		return res;
 	}
 	
-	public Solitaire getGrille()
+	public Solitaire getSolitaire()
 	{
-		return ligneGrille.getGrille();
+		return ligne.getSolitaire();
 	}
 	
 	public boolean estSelectionnee()
@@ -139,22 +139,22 @@ public class Case
 		{
 			if (enable)
 			{
-				if (getGrille().deplacementLegal(direction))
+				if (getSolitaire().deplacementLegal(direction))
 				{
-					Case c = getGrille().getCase(voisin(direction, 2));
+					Case c = getSolitaire().getCase(voisin(direction, 2));
 					c.setAccessible(enable);
 				}
 			}
 			else
 			{
-				Case c = getGrille().getCase(voisin(direction, 2));
+				Case c = getSolitaire().getCase(voisin(direction, 2));
 				if (c != null)
 					c.setAccessible(enable);
 			}
 		}
 	}
 	
-	/**
+	/*
 	 * !!!!!!! Ne déselectionne pas l'autre case
 	 */
 
@@ -171,18 +171,6 @@ public class Case
 		mouvementsLegaux(false);
 		changePerformed();
 	}
-
-//	Coordonnees calculeDeplacement(int direction)
-//	{
-//		return getCoordonnees().deplacement(direction);
-//	}
-//
-//	Coordonnees calculeDeplacement(int direction, int i)
-//	{
-//		if (i == 0)
-//			return getCoordonnees();
-//		return calculeDeplacement(direction, i - 1).deplacement(direction); 
-//	}
 
 	Coordonnees voisin(Direction direction, int i)
 	{

@@ -6,18 +6,15 @@ import java.util.TreeSet;
 
 public class Ligne 
 {
-	private Solitaire grille;
+	private Solitaire solitaire;
 	private int premiereColonne;
 	private int derniereColonne;
 	private Case[] cases;
 
-	/**
-	 * 
-	 */
-	public Ligne(Solitaire grille, int indice)
+	public Ligne(Solitaire solitaire, int indice)
 	{
-		this.grille = grille;
-		Forme formeGrille = grille.getFormeGrille();
+		this.solitaire = solitaire;
+		Forme formeGrille = solitaire.getForme();
 		premiereColonne = formeGrille.premiereColonne(indice);
 		derniereColonne = formeGrille.derniereColonne(indice);
 		int n = plageIndices();
@@ -40,25 +37,16 @@ public class Ligne
 		return premiereColonne + i;
 	}
 	
-	/**
-	 * 
-	 */
 	public int getPremiereColonne() 
 	{
 		return premiereColonne;
 	}
 
-	/**
-	 * 
-	 */
 	public int getDerniereColonne()
 	{
 		return derniereColonne;
 	}
 
-	/**
-	 * 
-	 */
 	public int nbPions()
 	{
 		int nb = 0;
@@ -68,9 +56,6 @@ public class Ligne
 		return nb;
 	}
 	
-	/**
-	 * 
-	 */
 	public Case getCase(int colonne)
 	{
 		int indice = tabIndexOfScreenIndex(colonne);
@@ -79,17 +64,11 @@ public class Ligne
 		return cases[indice];
 	}
 	
-	/**
-	 * 
-	 */
 	private int plageIndices()
 	{
 		return getDerniereColonne() - getPremiereColonne() + 1;
 	}
 	
-	/**
-	 * 
-	 */
 
 	public String toString()
 	{
@@ -102,13 +81,9 @@ public class Ligne
 		return res + "\n\n";
 	}
 
-	/**
-	 * 
-	 */
-
-	public Solitaire getGrille()
+	public Solitaire getSolitaire()
 	{
-		return grille;
+		return solitaire;
 	}
 	
 	public SortedSet<Coordonnees> getCoordonnees()
@@ -118,5 +93,4 @@ public class Ligne
 			coordonnees.add(cases[tabIndexOfScreenIndex(i)].getCoordonnees());
 		return coordonnees;
 	}
-
 }
