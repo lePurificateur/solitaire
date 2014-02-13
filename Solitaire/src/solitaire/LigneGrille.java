@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 public class LigneGrille 
 {
-	private Grille grille;
+	private Solitaire grille;
 	private int premiereColonne;
 	private int derniereColonne;
 	private Case[] cases;
@@ -14,7 +14,7 @@ public class LigneGrille
 	/**
 	 * 
 	 */
-	public LigneGrille(Grille grille, int indice)
+	public LigneGrille(Solitaire grille, int indice)
 	{
 		this.grille = grille;
 		FormeGrille formeGrille = grille.getFormeGrille();
@@ -106,7 +106,7 @@ public class LigneGrille
 	 * 
 	 */
 
-	public Grille getGrille()
+	public Solitaire getGrille()
 	{
 		return grille;
 	}

@@ -1,39 +1,18 @@
 package solitaire;
 
-import static solitaire.Grille.*;
+import static solitaire.Solitaire.*;
 
-public class Coordonnees implements Comparable<Coordonnees>
+public class Coordonnees extends Direction
 {
+	private Solitaire grille;
 
-	private final int i;
-	private final int j;
-	private Grille grille;
-	
-//	public Coordonnees(int i, int j) 
-//	{
-//		this.i = i;
-//		this.j = j;
-//	}
-
-	public Coordonnees(int i, int j, Grille grille) 
+	public Coordonnees(int i, int j, Solitaire grille) 
 	{
-//		this(i, j);
-		this.i = i;
-		this.j = j;
+		super(i, j);
 		this.grille = grille;
 	}
 
-	public int getI() 
-	{
-		return i;
-	}
-
-	public int getJ() 
-	{
-		return j;
-	}
-	
-	public Grille getGrille()
+	public Solitaire getGrille()
 	{
 		return grille;
 	}
@@ -57,25 +36,9 @@ public class Coordonnees implements Comparable<Coordonnees>
 		return getGrille().getCase(this);
 	}
 	
-	public String toString()
-	{
-		return "(" + i + "; " + j + ")"; 
-	}
-
-	@Override
-	public int compareTo(Coordonnees autre)
-	{
-		int res = ((Integer)getI()).compareTo(autre.getI());
-		if (res != 0)
-			return res;
-		else
-			return ((Integer)getJ()).compareTo(autre.getJ());
-	}
-	
 	public Coordonnees milieu(Coordonnees autre)
 	{
-		
-		return new Coordonnees((i + autre.getI())/2, (j + autre.getJ())/2, getGrille());
+		return new Coordonnees((getI() + autre.getI())/2, (getJ() + autre.getJ())/2, getGrille());
 	}
 
 	public Coordonnees voisin(int direction)

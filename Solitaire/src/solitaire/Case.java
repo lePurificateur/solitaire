@@ -123,7 +123,7 @@ public class Case
 		return res;
 	}
 	
-	public Grille getGrille()
+	public Solitaire getGrille()
 	{
 		return ligneGrille.getGrille();
 	}
@@ -135,7 +135,7 @@ public class Case
 	 
 	private void mouvementsLegaux(boolean enable)
 	{
-		for (int direction = Grille.MIN_DIRECTION ; direction <= Grille.MAX_DIRECTION ; 
+		for (int direction = Solitaire.MIN_DIRECTION ; direction <= Solitaire.MAX_DIRECTION ; 
 				direction++)
 		{
 			if (enable)

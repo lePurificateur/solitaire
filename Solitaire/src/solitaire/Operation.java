@@ -2,16 +2,16 @@ package solitaire;
 
 abstract class Operation 
 {
-	private Grille grille;
+	private Solitaire grille;
 	private Operation next;
 	
-	Operation(Grille grille)
+	Operation(Solitaire grille)
 	{
 		this.grille = grille;
 		setNext(null);
 	}
 	
-	public Grille getGrille()
+	public Solitaire getGrille()
 	{
 		return grille;
 	}

@@ -37,7 +37,7 @@ public class Selection
 			getCase().selectionne();
 	}
 	
-	public Grille getGrille() 
+	public Solitaire getGrille() 
 	{
 		return maCase.getGrille();
 	}

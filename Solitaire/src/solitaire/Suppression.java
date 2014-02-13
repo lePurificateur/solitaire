@@ -4,13 +4,13 @@ class Suppression extends Operation
 {
 	private Case caseSupprimee;
 	
-	Suppression(Grille grille, Case caseSupprimee)
+	Suppression(Solitaire grille, Case caseSupprimee)
 	{
 		super(grille);
 		this.caseSupprimee = caseSupprimee;
 	}
 
-	Suppression(Grille grille, Coordonnees c)
+	Suppression(Solitaire grille, Coordonnees c)
 	{
 		this(grille, c.getCase());
 	}

@@ -16,19 +16,19 @@ public abstract class FormeGrille
 		return taille;
 	}
 	
-	public static Grille getGrille(int forme, int taille)
+	public static Solitaire getGrille(int forme, int taille)
 	{
 		switch (forme)
 		{
-		case CARRE : return new Grille(new FormeGrille.Carre(taille));
-		case CROIX : return new Grille(new FormeGrille.Croix(taille));
-		case LOSANGE : return new Grille(new FormeGrille.Losange(taille));
-		case TRIANGLE : return new Grille(new FormeGrille.Triangle(taille));
+		case CARRE : return new Solitaire(new FormeGrille.Carre(taille));
+		case CROIX : return new Solitaire(new FormeGrille.Croix(taille));
+		case LOSANGE : return new Solitaire(new FormeGrille.Losange(taille));
+		case TRIANGLE : return new Solitaire(new FormeGrille.Triangle(taille));
 		default : return null;
 		}
 	}
 	
-	public Grille getGrille(int taille)
+	public Solitaire getGrille(int taille)
 	{
 		return getGrille(getFormeIndex(), taille);
 	}

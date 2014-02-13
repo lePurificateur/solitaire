@@ -3,7 +3,7 @@ package solitaire;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Grille 
+public class Solitaire 
 {
 	private Historique historique;
 	private LigneGrille[] lignes;
@@ -12,7 +12,7 @@ public class Grille
 	private Selection selection;
 	private boolean diagonaleAutorisee = false; 
 	private boolean modeTriche = false;
-	private ChangeListener<Grille> listener;
+	private ChangeListener<Solitaire> listener;
 	
  	public static final int BAS_GAUCHE= 1;
  	public static final int BAS= 2;
@@ -24,7 +24,7 @@ public class Grille
  	public static final int GAUCHE = 8;
  	public static final int MIN_DIRECTION = 1, MAX_DIRECTION = 8;
  	
-	public Grille(FormeGrille formeGrille) 
+	public Solitaire(FormeGrille formeGrille) 
 	{
 		this.formeGrille = formeGrille;
 		nbLignes = formeGrille.getNbLignes();
@@ -44,7 +44,7 @@ public class Grille
 		return coordonnees;
 	}
 
-	public void setChangeListener(ChangeListener<Grille> listener)
+	public void setChangeListener(ChangeListener<Solitaire> listener)
 	{
 		this.listener = listener;
 	}

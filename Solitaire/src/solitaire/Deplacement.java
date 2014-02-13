@@ -24,24 +24,24 @@ class Deplacement extends Operation
 		return true;
 	}
 
-	Deplacement(Grille grille, Case caseDepart, Case caseArrivee)
+	Deplacement(Solitaire grille, Case caseDepart, Case caseArrivee)
 	{
 		this(grille, caseDepart, (caseDepart != null) ? caseDepart.milieu(caseArrivee) : null, 
 				caseArrivee);
 	}
 	
-	Deplacement(Grille grille, Case caseDepart, Coordonnees coordArrivee)
+	Deplacement(Solitaire grille, Case caseDepart, Coordonnees coordArrivee)
 	{
 		this(grille, caseDepart, caseDepart.milieu(coordArrivee), coordArrivee.getCase());
 	}
 	
-	Deplacement(Grille grille, Case caseDepart, int direction)
+	Deplacement(Solitaire grille, Case caseDepart, int direction)
 	{
 		this(grille, caseDepart, caseDepart.voisin(direction, 2));
 	}
 
 	
-	Deplacement(Grille grille, Case caseDepart, Case caseMilieu, Case caseArrivee)
+	Deplacement(Solitaire grille, Case caseDepart, Case caseMilieu, Case caseArrivee)
 	{
 		super(grille);
 		this.caseDepart = caseDepart;

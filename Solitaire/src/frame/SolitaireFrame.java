@@ -19,7 +19,7 @@ import solitaire.*;
 public class SolitaireFrame
 {
 	private JFrame frame;
-	private Grille grille;
+	private Solitaire grille;
 	private Drawable caseDrawer = new CircleDrawer();
 	private List<SolitaireLabel> labels;
 	private int nbLignes, nbColonnes;
@@ -136,7 +136,7 @@ public class SolitaireFrame
 		return mainPanel;
 	}
 
-	private void setGrille(Grille grille)
+	private void setGrille(Solitaire grille)
 	{
 		this.grille = grille;
 		grille.setSelection(null);
@@ -244,12 +244,12 @@ public class SolitaireFrame
 		};
 	}
 
-	private ChangeListener<Grille> getGrilleListener()
+	private ChangeListener<Solitaire> getGrilleListener()
 	{
-		return new ChangeListener<Grille>()
+		return new ChangeListener<Solitaire>()
 		{
 			@Override
-			public void changePerformed(Grille source)
+			public void changePerformed(Solitaire source)
 			{
 				modeTriche.setEnabled(!source.estTerminee());
 				diagonale.setEnabled(!source.estTerminee());
@@ -381,7 +381,7 @@ public class SolitaireFrame
 		};
 	}
 
-	public SolitaireFrame(Grille grille)
+	public SolitaireFrame(Solitaire grille)
 	{
 		frame = new JFrame();
 		frame.setVisible(true);
@@ -392,6 +392,6 @@ public class SolitaireFrame
 	
 	public static void main(String[] args)
 	{
-		new SolitaireFrame(new Grille(new FormeGrille.Losange(3)));
+		new SolitaireFrame(new Solitaire(new FormeGrille.Losange(3)));
 	}
 }

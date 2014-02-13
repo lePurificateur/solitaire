@@ -18,7 +18,7 @@ public class SolitaireView extends JFrame implements KeyListener
 	private static final int TAILLE_MIN = 2, TAILLE_MAX = 6;
 	private int taille = 3;
 	
-	private Grille grille;
+	private Solitaire grille;
 	private Case caseInitiale;
 	private JTextArea text = new JTextArea ("test");
 	private int forme = FormeGrille.CARRE; 
@@ -98,7 +98,7 @@ public class SolitaireView extends JFrame implements KeyListener
 	
 	public SolitaireView()
 	{
-		grille = new Grille(new FormeGrille.Carre(taille));
+		grille = new Solitaire(new FormeGrille.Carre(taille));
 		init();
 	}
 
@@ -115,19 +115,19 @@ public class SolitaireView extends JFrame implements KeyListener
 		if (!pionSelectionne())
 			switch(c)
 			{
-				case KEY_LEFT : grille.deplaceSelection(Grille.GAUCHE);break;
-				case KEY_UP : grille.deplaceSelection(Grille.HAUT);break;
-				case KEY_RIGHT : grille.deplaceSelection(Grille.DROITE);break;
-				case KEY_DOWN : grille.deplaceSelection(Grille.BAS);break;
+				case KEY_LEFT : grille.deplaceSelection(Solitaire.GAUCHE);break;
+				case KEY_UP : grille.deplaceSelection(Solitaire.HAUT);break;
+				case KEY_RIGHT : grille.deplaceSelection(Solitaire.DROITE);break;
+				case KEY_DOWN : grille.deplaceSelection(Solitaire.BAS);break;
 				default: 
 			}
 		else
 			switch(c)
 			{
-				case KEY_LEFT : deplacePion(Grille.GAUCHE);break;
-				case KEY_UP : deplacePion(Grille.HAUT);break;
-				case KEY_RIGHT : deplacePion(Grille.DROITE);break;
-				case KEY_DOWN : deplacePion(Grille.BAS);break;
+				case KEY_LEFT : deplacePion(Solitaire.GAUCHE);break;
+				case KEY_UP : deplacePion(Solitaire.HAUT);break;
+				case KEY_RIGHT : deplacePion(Solitaire.DROITE);break;
+				case KEY_DOWN : deplacePion(Solitaire.BAS);break;
 				default: 
 			}
 	}
@@ -165,14 +165,14 @@ public class SolitaireView extends JFrame implements KeyListener
 				case RETABLIR : retablir(); break;
 				case MODE_DIAGONALE : grille.setDiagonaleAutorisee(!grille.diagonaleAutorisee());break;
 				case DETRUIRE : grille.detruitPionSelectionne();break;
-				case BAS_GAUCHE : deplacePion(Grille.BAS_GAUCHE);break;
-				case BAS : deplacePion(Grille.BAS);break;
-				case BAS_DROITE : deplacePion(Grille.BAS_DROITE);break;
-				case GAUCHE : deplacePion(Grille.GAUCHE);break;
-				case DROITE : deplacePion(Grille.DROITE);break;
-				case HAUT_GAUCHE : deplacePion(Grille.HAUT_GAUCHE);break;
-				case HAUT : deplacePion(Grille.HAUT);break;
-				case HAUT_DROITE : deplacePion(Grille.HAUT_DROITE);break;
+				case BAS_GAUCHE : deplacePion(Solitaire.BAS_GAUCHE);break;
+				case BAS : deplacePion(Solitaire.BAS);break;
+				case BAS_DROITE : deplacePion(Solitaire.BAS_DROITE);break;
+				case GAUCHE : deplacePion(Solitaire.GAUCHE);break;
+				case DROITE : deplacePion(Solitaire.DROITE);break;
+				case HAUT_GAUCHE : deplacePion(Solitaire.HAUT_GAUCHE);break;
+				case HAUT : deplacePion(Solitaire.HAUT);break;
+				case HAUT_DROITE : deplacePion(Solitaire.HAUT_DROITE);break;
 				case DEPLACER : deplacer(); break;
 				default : arrowReleased(e.getKeyCode());
 			}
