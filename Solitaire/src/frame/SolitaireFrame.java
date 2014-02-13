@@ -20,7 +20,7 @@ public class SolitaireFrame
 {
 	private JFrame frame;
 	private Solitaire grille;
-	private Drawable caseDrawer = new TextDrawer();
+	private Drawable caseDrawer = new CircleDrawer();
 	private List<SolitaireLabel> labels;
 	private int nbLignes, nbColonnes;
 	static final String 
